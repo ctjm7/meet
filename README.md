@@ -50,12 +50,12 @@ Scenario 3: User can collapse an event to hide its details
 ### Feature 3: Specify Number of Events
 As a user
 I should be able to "specify the number of events visible"
-So that I can see a specific number of events 
+So that I can see a specific number of events
 
 Scenario 1: When user hasn’t specified a number, 32 is the default number
-- Given events are loaded 
+- Given events are loaded
 - When user has not set a specified custom number of events
-- Then 32 events will be loaded 
+- Then 32 events will be loaded
 
 Scenario 2: User can change the number of events they want to see
 - Given the events have been loaded
@@ -70,7 +70,7 @@ So that I can see events listed without being online
 Scenario 1: Show cached data when there’s no internet connection
 - Given data is stored in cache
 - When user is offline
-- Then they are able to view stored data 
+- Then they are able to view stored data
 
 Scenario 2: Show error when user changes the settings (city, time range)
 - Given that the user is offline
@@ -85,3 +85,4 @@ So that I can see events in an organized manner in each city
 Scenario 1: Show a chart with the number of upcoming events in each city
 - Given the events are loaded of events in each city
 - When user is on page to view number of events
+- Then a chart with number of upcoming events in each city is displayed
