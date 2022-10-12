@@ -23,20 +23,12 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-title')).toHaveLength(1);
   });
 
-  test('render link', () => {
-    expect(EventWrapper.find('.link')).toHaveLength(1);
-  });
-
-  test('render about heading', () => {
-    expect(EventWrapper.find('.about')).toHaveLength(1);
-  });
-
-  /* checks if button value changes on click */
-  test('change value when button is clicked', () => {
+  /* checks if html link is visible on click */
+  test('cha when button is clicked', () => {
     const submitButton = EventWrapper.find('.details');
-    const eventObject = { target: { value: 'Details' } };
-    submitButton.simulate('click', eventObject);
-    expect(submitButton.prop('value')).toBe('Hide Details');
+    submitButton.simulate('click');
+    expect(EventWrapper.find('.link')).toHaveLength(1);
+    EventWrapper.unmount();
   });
 
 });
