@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
@@ -66,6 +66,42 @@ describe('<App /> integration', () => {
     await suggestionItems.at(suggestionItems.length - 1).simulate('click');
     const allEvents = await getEvents();
     expect(AppWrapper.state('events')).toEqual(allEvents);
+    AppWrapper.unmount();
+  });
+
+  test('App passed number of events state as a prop to NumberOfEvents', () => {
+    const AppWrapper = mount(<App />);
+    const AppEventsState = AppWrapper.state('numberOfEvents');
+    expect(AppEventsState).not.toEqual(undefined);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppEventsState);
+    AppWrapper.unmount();
+  });
+
+  test('get list of events matching the number of events entered by the user', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventItems = Math.floor(Math.random() * 32);
+    const eventObject = { target: { value: eventItems } };
+    await NumberOfEventsWrapper.find('.number').simulate(
+      'change',
+      eventObject
+    );
+    expect(AppWrapper.state('numberOfEvents')).toEqual(eventItems);
+    AppWrapper.unmount();
+  });
+
+    test('App passes "event" array equal in length to numberOfEvents to EventList', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({
+      numberOfEvents: 1
+    });
+    const allEvents = await getEvents();
+    const events = allEvents.slice(0, 1);
+    AppWrapper.setState({
+      events: events
+    });
+    const eventLength= (AppWrapper.find(EventList).props().events).length
+    expect(eventLength).toEqual(AppWrapper.state('numberOfEvents'));
     AppWrapper.unmount();
   });
 
