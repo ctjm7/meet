@@ -24,7 +24,7 @@ describe('<Event /> component', () => {
   });
 
   /* checks if html link is visible on click */
-  test('cha when button is clicked', () => {
+  test('check when button is clicked', () => {
     const submitButton = EventWrapper.find('.details');
     submitButton.simulate('click');
     expect(EventWrapper.find('.link')).toHaveLength(1);

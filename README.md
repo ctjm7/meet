@@ -35,7 +35,7 @@ So that I can see the list of events that take place in that city
 Scenario 1: An event element is collapsed by default
 - Given list of events has been loaded
 - When user has not clicked on "Show details" button
-- Then the even element details are collapsed and not visible
+- Then the event element details are collapsed and not visible
 
 Scenario 2: User can expand an event to see its details
 - Given the list of events has been loaded
