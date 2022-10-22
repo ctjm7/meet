@@ -24,7 +24,7 @@ class App extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.mounted = false;
   }
 
@@ -32,10 +32,16 @@ class App extends Component {
     if (eventCount === undefined) {
       eventCount = this.state.numberOfEvents;
     }
+
     getEvents().then((events) => {
-      const locationEvents = location === "all" ?
-        events :
-        events.filter((event) => event.location === location);
+      let locationEvents;
+      if (location === undefined) {
+        locationEvents = events;
+      } else if (location === "all") {
+        locationEvents = events;
+      } else {
+        locationEvents = events.filter((event) => event.location === location);
+      }
       this.setState({
         events: locationEvents.slice(0, eventCount),
         numberOfEvents: eventCount
