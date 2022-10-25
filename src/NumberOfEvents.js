@@ -7,7 +7,7 @@ class NumberOfEvents extends Component {
     errorText: ""
 }
 
-  handleInputChanged = (event) => {
+ handleInputChanged = (event) => {
     const value = event.target.value;
     if (value < 1 || value > 32) {
       this.setState({
@@ -33,7 +33,7 @@ class NumberOfEvents extends Component {
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
         />
-        <ErrorAlert style={{ marginTop: "100px" }} text={this.state.errorText} />
+        <ErrorAlert id="errorAlert" text={this.state.errorText} />
       </div>
     );
   }

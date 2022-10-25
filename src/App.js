@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    query: ""
   }
 
   componentDidMount() {
@@ -28,15 +29,18 @@ class App extends Component {
     this.mounted = false;
   }
 
+  handleQueryState = (query) => {
+    this.setState({ query });
+  }
+
   updateEvents = (location, eventCount) => {
     if (eventCount === undefined) {
       eventCount = this.state.numberOfEvents;
     }
-
     getEvents().then((events) => {
       let locationEvents;
       if (location === undefined) {
-        locationEvents = events;
+        locationEvents = events.filter((event) => event.location === this.state.query);
       } else if (location === "all") {
         locationEvents = events;
       } else {
@@ -52,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} query={this.state.query} handleQueryState={this.handleQueryState} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
       </div>
