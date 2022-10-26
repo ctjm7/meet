@@ -10,15 +10,13 @@ function OfflineAlert(props) {
 
   return (
     <>
-
       {isVisible ?
         (<div className="offlineAlert" >
           <p style={{ color: 'red' }}>{props.text}</p>
         </div >)
         : (<div className="offlineAlert">
-          <p>{props.text}</p>
+          <p>{""}</p>
         </div>)}
-
     </>
   );
 }

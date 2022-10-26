@@ -40,10 +40,9 @@ class App extends Component {
           "You are offline, your data was loaded from the cache"
       });
     } else {
-      this.setState({ offlineText: '' });
+      this.setState({ offlineText: "" });
     }
   }
-
 
   componentWillUnmount() {
     this.mounted = false;
