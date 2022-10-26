@@ -34,14 +34,14 @@ class App extends Component {
         }
       });
     }
-    if (!navigator.onLine) {
-      this.setState({
-        offlineText:
-          "You are offline, your data was loaded from the cache"
-      });
-    } else {
-      this.setState({ offlineText: "" });
-    }
+    // if (!navigator.onLine) {
+    //   this.setState({
+    //     offlineText:
+    //       "You are offline, your data was loaded from the cache"
+    //   });
+    // } else {
+    //   this.setState({ offlineText: "" });
+    // }
   }
 
   componentWillUnmount() {
