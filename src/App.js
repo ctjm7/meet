@@ -6,7 +6,6 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import OfflineAlert from './OfflineAlert';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
-// import { OffAlert } from './Alert';
 
 class App extends Component {
   state = {
@@ -14,7 +13,8 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     query: "",
-    showWelcomeScreen: undefined
+    showWelcomeScreen: undefined,
+    offlineText: ""
   }
 
   async componentDidMount() {
@@ -34,7 +34,16 @@ class App extends Component {
         }
       });
     }
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText:
+          "You are offline, your data was loaded from the cache"
+      });
+    } else {
+      this.setState({ offlineText: '' });
+    }
   }
+
 
   componentWillUnmount() {
     this.mounted = false;
@@ -69,7 +78,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <OfflineAlert />
+        <OfflineAlert text={this.state.offlineText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} query={this.state.query} handleQueryState={this.handleQueryState} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />

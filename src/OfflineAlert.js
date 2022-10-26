@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTimeout } from 'usehooks-ts';
 
-function OfflineAlert() {
+function OfflineAlert(props) {
   const [isVisible, setIsVisible] = useState(true);
 
   const hide = () => setIsVisible(false);
@@ -10,16 +10,15 @@ function OfflineAlert() {
 
   return (
     <>
-      {!navigator.onLine ?
 
-        (isVisible ?
-          (<div className="offlineAlert" >
-          <p style={{ color: 'red' }}>You are currently offline</p>
-          </div >)
-          : (<div><p style={{ color: 'green' }}>You are online</p></div>))
+      {isVisible ?
+        (<div className="offlineAlert" >
+          <p style={{ color: 'red' }}>{props.text}</p>
+        </div >)
+        : (<div className="offlineAlert">
+          <p>{props.text}</p>
+        </div>)}
 
-      : <div></div>
-      }
     </>
   );
 }

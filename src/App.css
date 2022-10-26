@@ -142,6 +142,10 @@ input[type="number"] {
   display: contents;
 }
 
+.offlineAlert {
+  margin: 2px 0;
+}
+
 .data-vis-wrapper {
   display: flex;
   align-items: center;
