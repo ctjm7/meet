@@ -12,7 +12,7 @@ function OfflineAlert(props) {
     <>
       {isVisible ?
         (<div className="offlineAlert" >
-          <p style={{ color: 'red' }}>{props.text}</p>
+          <p style={{ color: 'red' }}>You are offline, your data was loaded from the cache</p>
         </div >)
         : (<div className="offlineAlert">
           <p>{""}</p>

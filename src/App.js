@@ -13,8 +13,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     query: "",
-    showWelcomeScreen: undefined,
-    offlineText: ""
+    showWelcomeScreen: undefined
   }
 
   async componentDidMount() {
@@ -34,14 +33,6 @@ class App extends Component {
         }
       });
     }
-    // if (!navigator.onLine) {
-    //   this.setState({
-    //     offlineText:
-    //       "You are offline, your data was loaded from the cache"
-    //   });
-    // } else {
-    //   this.setState({ offlineText: "" });
-    // }
   }
 
   componentWillUnmount() {
@@ -77,7 +68,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <OfflineAlert text={this.state.offlineText} />
+        {!navigator.onLine ?
+          <OfflineAlert text={this.state.offlineText} />
+          : <div />}
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} query={this.state.query} handleQueryState={this.handleQueryState} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
