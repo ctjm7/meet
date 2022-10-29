@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import OfflineAlert from './OfflineAlert';
+import EventGenre from './EventGenre';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
@@ -59,7 +60,7 @@ class App extends Component {
           locationEvents = events.filter((event) => event.location === location);
         }
       } else {
-        if (this.state.query) {
+        if (this.state.query && this.state.query !== "all") {
           locationEvents = events.filter((event) => event.location === this.state.query)
         } else {
           locationEvents = events;
@@ -95,7 +96,7 @@ class App extends Component {
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
         <h4>Events in each city</h4>
         <div className='data-vis-wrapper'>
-          {/* <EventGenre events={this.state.events} /> */}
+          <EventGenre events={this.state.events} />
           <ResponsiveContainer height={400}>
             <ScatterChart
               margin={{top: 20, right: 20, bottom: 20, left: 20 }}>
