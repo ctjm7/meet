@@ -60,7 +60,7 @@ class App extends Component {
           locationEvents = events.filter((event) => event.location === location);
         }
       } else {
-        if (this.state.query && this.state.query !== "all") {
+        if (this.state.query) {
           locationEvents = events.filter((event) => event.location === this.state.query)
         } else {
           locationEvents = events;
