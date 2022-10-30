@@ -60,7 +60,7 @@ class App extends Component {
           locationEvents = events.filter((event) => event.location === location);
         }
       } else {
-        if (this.state.query) {
+        if (this.state.query && this.state.query !== "all") {
           locationEvents = events.filter((event) => event.location === this.state.query)
         } else {
           locationEvents = events;
@@ -109,8 +109,8 @@ class App extends Component {
           </ResponsiveContainer>
          </div>
         <EventList events={this.state.events} />
-        {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} /> */}
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
