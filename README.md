@@ -1,10 +1,9 @@
-# meet
-## Meet friends, meet strangers, meet yourself
+# Meet App
 
-Meet is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events in a city.
+## Description
+Meet is a serverless, progressive web application (PWA) using React with a test-driven development technique. The application uses the Google Calendar API to fetch upcoming events in a city.
 
 ## Features
-
 ### Feature 1: Filter Events by City
 As a user
 I should be able to “filter events by city”
@@ -86,3 +85,39 @@ Scenario 1: Show a chart with the number of upcoming events in each city
 - Given the events are loaded of events in each city
 - When user is on page to view number of events
 - Then a chart with number of upcoming events in each city is displayed
+
+## Tech Used
+JavaScript, React, OAuth2 authentication, Google Calendar API, AWS lambda, service workier
+
+## Dependencies
+```"@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "atatus-spa": "^4.5.0",
+    "axios": "^0.27.2",
+    "nprogress": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.1.15",
+    "usehooks-ts": "^2.9.1",
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^6.5.4",
+    "workbox-broadcast-update": "^6.5.4",
+    "workbox-cacheable-response": "^6.5.4",
+    "workbox-core": "^6.5.4",
+    "workbox-expiration": "^6.5.4",
+    "workbox-google-analytics": "^6.5.4",
+    "workbox-navigation-preload": "^6.5.4",
+    "workbox-precaching": "^6.5.4",
+    "workbox-range-requests": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4",
+    "workbox-streams": "^6.5.4"
+
+    "devDependencies": 
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "enzyme": "^3.11.0",
+    "gh-pages": "^4.0.0",
+    "jest-cucumber": "^3.0.1",
+    "puppeteer": "^18.1.0"
